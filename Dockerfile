@@ -7,7 +7,7 @@ RUN mkdir /myApp
 WORKDIR /myApp
 
 # Bundle the application code inside the Docker image
-COPY package*.json app /myApp/
+COPY package*.json server.js /myApp/
 
 # Install application dependencies
 RUN npm install

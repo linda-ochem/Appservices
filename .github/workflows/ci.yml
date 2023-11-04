@@ -20,9 +20,9 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t cleowoman/api:v1 .
+        run: docker build -t cleowoman/api:v2 .
         # Replace 'your-dockerhub-username' and 'your-image-name' with your Docker Hub username and image name
 
       - name: Push Docker image to Docker Hub
-        run: docker push cleowoman/api:v1
+        run: docker push cleowoman/api:v2
         # Replace 'your-dockerhub-username' and 'your-image-name' with your Docker Hub username and image name

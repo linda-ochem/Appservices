@@ -1,0 +1,28 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - dev # You can specify the branch you want to trigger the workflow
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Build Docker image
+        run: docker build -t cleowoman/api:v1 .
+        # Replace 'your-dockerhub-username' and 'your-image-name' with your Docker Hub username and image name
+
+      - name: Push Docker image to Docker Hub
+        run: docker push cleowoman/api:v1
+        # Replace 'your-dockerhub-username' and 'your-image-name' with your Docker Hub username and image name

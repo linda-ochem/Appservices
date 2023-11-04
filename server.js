@@ -9,7 +9,7 @@ app.get('/api/comments/:id', (req, res)=>{
     const limit = req.params.id
     const passedLimit = parseInt(limit);
   if (isNaN(passedLimit) || passedLimit <= 0) {
-    return res.status(400).json({ error: 'Invalid limit value!' });
+    return res.status(400).json({ error: 'Invalid limit value!!' });
   }
 
     fetch('https://jsonplaceholder.typicode.com/comments')
